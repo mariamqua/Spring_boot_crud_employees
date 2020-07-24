@@ -3,6 +3,7 @@ package com.exam.employee.validation;
 
 import com.exam.employee.entity.Employee;
 import com.exam.employee.service.EmployeeService;
+import com.exam.employee.validation.annotations.UniqueTel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

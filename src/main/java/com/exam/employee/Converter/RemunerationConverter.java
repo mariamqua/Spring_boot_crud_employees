@@ -1,16 +1,16 @@
 package com.exam.employee.Converter;
 
-import com.exam.employee.entity.Departement;
+import com.exam.employee.entity.Remuneration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DepartementConverter implements Converter<String, Departement> {
+public class RemunerationConverter implements Converter<String, Remuneration> {
     @Override
-    public Departement convert(String source) {
+    public Remuneration convert(String source) {
         if (source.isEmpty()) return null;
         else {
-            return new Departement(Long.parseLong(source));
+            return new Remuneration(Long.parseLong(source));
         }
     }
 }

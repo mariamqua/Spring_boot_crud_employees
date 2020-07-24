@@ -1,4 +1,6 @@
-package com.exam.employee.validation;
+package com.exam.employee.validation.annotations;
+
+import com.exam.employee.validation.UniqueCinClass;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

@@ -6,13 +6,11 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Gestion HR </title>
-    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"/>
-    <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-    <script src="<c:url value="https://code.jquery.com/jquery-3.5.1.js" />"></script>
-    <script src="<c:url value="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" />"></script>
-    <script src="<c:url value="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js" />"></script>
+    <title>Employees </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
         #btn{
             margin-bottom: 2%;
@@ -42,7 +40,6 @@
                 <th>email</th>
                 <th>grade</th>
                 <th>salaire</th>
-                <th>Ch Affaire</th>
                 <th>Action</th>
 
 
@@ -55,7 +52,6 @@
                     <td>${item.email}</td>
                     <td>${item.grade}</td>
                     <td>${item.salaire}</td> 
-                    <td>${item.chiffre_affaire}</td>
                     <td>
                         <a href="${pageContext.request.contextPath}/employees/add/${item.id}">Update</a>
                         <a href="${pageContext.request.contextPath}/employees/delete/${item.id}"

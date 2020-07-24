@@ -1,8 +1,8 @@
 package com.exam.employee.entity;
 
-import com.exam.employee.validation.UniqueCin;
-import com.exam.employee.validation.UniqueEmail;
-import com.exam.employee.validation.UniqueTel;
+import com.exam.employee.validation.annotations.UniqueCin;
+import com.exam.employee.validation.annotations.UniqueEmail;
+import com.exam.employee.validation.annotations.UniqueTel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,7 @@ import java.util.List;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private short id;
+    private long  id;
 
     @Column
     @NotBlank(message = "champ obligatoire")
@@ -60,31 +60,24 @@ public class Employee {
     private Boolean used;
     @NotBlank(message = "champ obligatoire")
     private String grade;
-
-    @NotNull(message = "champ obligatoire")
     private double salaire;
-
-    @Column
-    private double chiffre_affaire;
-
-    @Column
-    private boolean is_admin;
+    private String type;
 
     @ManyToOne
     private Departement departement;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="employee_id" )
-    private List<Remuneration> remunerations;
+    @ManyToOne(fetch= FetchType.EAGER)
+    private Remuneration remuneration;
 
-    @ManyToOne(cascade={CascadeType.MERGE} )
+    @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name="manager_id")
     private Employee manager;
 
     @OneToMany(mappedBy="manager")
+    //@JoinColumn(name="sous_jacents")
     private List<Employee> sous_jacents = new ArrayList<>();
 
-    public Employee(short id)
+    public Employee(long id)
     {
         this.id=id;
     }

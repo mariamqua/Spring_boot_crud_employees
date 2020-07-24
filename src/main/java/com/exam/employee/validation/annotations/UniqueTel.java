@@ -1,4 +1,6 @@
-package com.exam.employee.validation;
+package com.exam.employee.validation.annotations;
+
+import com.exam.employee.validation.UniqueTelClass;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -10,9 +12,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Retention(RUNTIME)
 @Target(ElementType.TYPE )
-@Constraint(validatedBy = UniqueEmailClass.class)
-public @interface UniqueEmail {
-    String message() default "Email déjà utilisé";
+@Constraint(validatedBy = UniqueTelClass.class)
+public @interface UniqueTel {
+    String message() default "Tel déjà utilisé";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
 }

@@ -11,7 +11,7 @@ public class EmployeeConverter implements Converter<String, Employee> {
     public Employee convert(String source) {
         if (source.isEmpty()) return null;
         else {
-            return new Employee(Short.parseShort(source));
+            return new Employee(Long.parseLong(source));
         }
     }
 }

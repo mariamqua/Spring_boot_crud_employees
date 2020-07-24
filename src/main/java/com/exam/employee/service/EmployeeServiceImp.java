@@ -22,7 +22,7 @@ public class EmployeeServiceImp implements EmployeeService{
 
     @Override
     @Transactional
-    public void deleteById(short id) {
+    public void deleteById(long  id) {
         employeeRepository.deleteById(id);
     }
 
@@ -32,12 +32,12 @@ public class EmployeeServiceImp implements EmployeeService{
     }
 
     @Override
-    public List<Employee> getSousJacents(short id) {
+    public List<Employee> getSousJacents(long  id) {
         return employeeRepository.getSousJacents(id);
     }
 
     @Override
-    public Employee findEmployeeById(short id) {return employeeRepository.findEmployeeById(id);}
+    public Employee findEmployeeById(long  id) {return employeeRepository.findEmployeeById(id);}
 
     @Override
     public Employee findEmployeeByCin(String cin) {

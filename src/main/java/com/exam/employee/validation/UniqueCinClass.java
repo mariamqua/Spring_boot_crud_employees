@@ -2,7 +2,7 @@ package com.exam.employee.validation;
 
 import com.exam.employee.entity.Employee;
 import com.exam.employee.service.EmployeeService;
-import com.exam.employee.validation.UniqueCin;
+import com.exam.employee.validation.annotations.UniqueCin;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

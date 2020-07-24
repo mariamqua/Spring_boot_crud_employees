@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Gestion HR </title>
     <title>Employees </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -26,16 +27,16 @@
 <div class="container" id="global">
     <jsp:directive.include file="../layout/header.jsp" />
     <header class="col-lg-12">
-        <h1>Tous les Départements</h1>
+        <h1>Toute les Rémunérations</h1>
         <div class="col-lg-12" id="btn">
-            <a href="${pageContext.request.contextPath}/departements/add" class="btn btn-primary">
-                Ajouter Département</a>
+            <a href="${pageContext.request.contextPath}/remunerations/add" class="btn btn-primary">
+                Ajouter Rémunération</a>
             <br/>
         </div>
         <table id="example"  class="table table-striped table-bordered">
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
+                <th>Nom </th>
                 <th>Type</th>
                 <th>Action</th>
 
@@ -44,13 +45,13 @@
             <c:forEach items="${liste}" var="item">
                 <tr>
                     <td>${item.id}</td>
-                    <td><a href="${pageContext.request.contextPath}/departements/view/${item.id}">
+                    <td><a href="${pageContext.request.contextPath}/remunerations/view/${item.id}">
                             ${item.name}</a></td>
 
                     <td>${item.type}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/departements/add/${item.id}">Update</a>
-                        <a href="${pageContext.request.contextPath}/departements/delete/${item.id}"
+                        <a href="${pageContext.request.contextPath}/remunerations/add/${item.id}">Update</a>
+                        <a href="${pageContext.request.contextPath}/remunerations/delete/${item.id}"
                              onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">Delete</a>
                     </td>
 

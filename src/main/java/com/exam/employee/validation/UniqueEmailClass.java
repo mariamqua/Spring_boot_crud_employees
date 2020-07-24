@@ -2,7 +2,7 @@ package com.exam.employee.validation;
 
 import com.exam.employee.entity.Employee;
 import com.exam.employee.service.EmployeeService;
-import com.exam.employee.validation.UniqueEmail;
+import com.exam.employee.validation.annotations.UniqueEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -17,13 +18,17 @@ import java.util.List;
 public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    short id;
+    long id;
+
+    @Column
+    @NotBlank(message = "champ obligatoire")
     private String name;
+
+    @Column
     private String type;
-    @OneToMany(cascade= CascadeType.ALL ,fetch = FetchType.EAGER)
-    @JoinColumn(name="departement_id" )
-    private List<Employee> employees;
-    public Departement(short id){
+
+    public Departement(long id){
         this.id=id;
     }
+
 }

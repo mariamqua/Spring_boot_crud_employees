@@ -6,9 +6,10 @@
 <html>
 <head>
     <title>Ajouter employee</title>
-    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" />
-    <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -18,10 +19,10 @@
         <h1>Ajouter un Employee</h1>
         <form:errors path="employee" cssClass="alert-danger" />
         <form:form method="post" action="${pageContext.request.contextPath}/employees/save" modelAttribute="employee" >
-            <form:input path="id"  />
+            <form:input path="id"  type="hidden"/>
             <div class="form-group">
                 <label class="form-check-label">
-                    Departement
+                    Département
                 </label>
 
                 <form:select path="departement"  class="form-control" id="select">
@@ -34,7 +35,7 @@
 
 
             <div class="form-group">
-                <label for="cin">cin </label>
+                <label for="cin">Cin </label>
                 <form:input path="cin" cssClass="form-control"  placeholder="Cin" />
                 <form:errors path="cin" cssClass="alert-danger" />
 
@@ -45,8 +46,8 @@
                 <form:errors path="nom" cssClass="alert-danger" />
             </div>
             <div class="form-group">
-                <label for="tel">Tel</label>
-                <form:input path="tel" cssClass="form-control"  placeholder="Tel" />
+                <label for="tel">Tél</label>
+                <form:input path="tel" cssClass="form-control"  placeholder="Tél" />
                 <form:errors path="tel" cssClass="alert-danger" />
 
             </div>
@@ -67,11 +68,19 @@
                 <form:input path="salaire" cssClass="form-control"  placeholder="Salaire" />
                 <form:errors path="salaire" cssClass="alert-danger" />
             </div>
+
             <div class="form-group">
-                <label for="chiffre_affaire">Chiffre d'affaire</label>
-                <form:input path="chiffre_affaire" cssClass="form-control"  placeholder="Chiffre d'affaire"/>
-                <form:errors path="chiffre_affaire" cssClass="alert-danger" />
+                <label for="type">Type</label>
+
+                <form:select class="form-check-label" id="show" onchange="change(this)"
+                             path="type" cssClass="form-control" multiple="false">
+                    <form:option value="Normal" />
+                    <form:option value="Manager " />
+
+                </form:select>
+                <form:errors path="type" cssClass="alert-danger" />
             </div>
+
             <div class="form-group">
                 <label class="form-check-label">
                     Manager
@@ -79,15 +88,15 @@
 
                 <form:select path="manager"  class="form-control" id="select">
                     <option value=""> selectionner un manager  </option>
-                    <c:forEach items="${employees}"   var="dep">
-                        <option value="${dep.id}"> ${dep.nom}  </option>
+                    <c:forEach items="${employees}"   var="empl">
+                        <option value="${empl.id}"> ${empl.nom}  </option>
                     </c:forEach>
                 </form:select>
                 <form:errors path="manager" cssClass="alert-danger" />
             </div>
         <div class="form-group">
             <label class="form-check-label">
-                sous_jacents
+                Sous jacents
             </label>
             <c:forEach items="${employees}"   var="emp">
                 <c:choose>
@@ -102,12 +111,47 @@
                 </c:choose>
 
             </c:forEach>
-        </div>
             <form:errors path="sous_jacents" cssClass="alert-danger" />
+
+        </div>
+
+
+            <div>
+                <label>Text area</label>
+                <textarea id="text_area" class="form-control" type="text" name="text_area" placeholder="Write something" rows="5" cols="50" style="display: none"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    Rémuneration
+                </label>
+
+                <form:select path="remuneration"  class="form-control" id="select">
+                    <c:forEach items="${remuneration}"   var="rem">
+                        <option value="${rem.id}"> ${rem.name} : ${rem.type}  </option>
+                    </c:forEach>
+                </form:select>
+                <form:errors path="remuneration" cssClass="alert-danger" />
+            </div>
 
             <input type = "submit" value = "Submit" class="btn btn-primary"/>
         </form:form>
     </header>
 </div>
 </body>
+<script>
+    function change(obj) {
+
+
+        var selectBox = obj;
+        var selected = selectBox.options[selectBox.selectedIndex].value;
+        var textarea = document.getElementById("text_area");
+
+        if(selected === '1'){
+            textarea.style.display = "block";
+        }
+        else{
+            textarea.style.display = "none";
+        }
+    }
+</script>
 </html>

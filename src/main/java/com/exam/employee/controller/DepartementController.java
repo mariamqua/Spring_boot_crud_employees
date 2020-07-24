@@ -2,6 +2,7 @@ package com.exam.employee.controller;
 
 import com.exam.employee.entity.Departement;
 import com.exam.employee.entity.Employee;
+import com.exam.employee.exception.ResourceNotFoundException;
 import com.exam.employee.service.DepartementService;
 import com.exam.employee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,19 +37,19 @@ public class DepartementController {
     public String save(@Valid @ModelAttribute("departement") Departement departement, BindingResult result, ModelMap model) {
         if(result.hasErrors()){
             model.addAttribute("departement",departement);
-            return "add";
+            return "departement/add";
         }
        departementService.save(departement);
         return "redirect:/departements/";
     }
     @RequestMapping("/view/{id}")
-    public String view(@PathVariable("id") short  id, ModelMap model){
+    public String view(@PathVariable("id") long  id, ModelMap model) throws ResourceNotFoundException {
         model.addAttribute("departement",departementService.findDepartementById(id));
         return "departement/view";
     }
 
     @GetMapping("/add/{id}")
-    public String edit(@PathVariable("id") Short id, ModelMap model)  {
+    public String edit(@PathVariable("id") long id, ModelMap model) throws ResourceNotFoundException {
         Departement departement=departementService.findDepartementById(id);
 
         model.addAttribute("departement",departement );
@@ -57,7 +58,7 @@ public class DepartementController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Short id, ModelMap model) {
+    public String delete(@PathVariable("id") long id, ModelMap model) {
         departementService.deleteById(id);
         return "redirect:/departements/";
     }

@@ -8,9 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface DepartementRepository extends JpaRepository<Departement,Short> {
+public interface DepartementRepository extends JpaRepository<Departement,Long> {
 
 
-    public Departement findDepartementById(short id);
+    public Departement findDepartementById(long  id);
 
 }

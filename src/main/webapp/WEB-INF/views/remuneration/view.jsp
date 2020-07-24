@@ -21,9 +21,10 @@
     <jsp:directive.include file="../layout/header.jsp" />
 
     <div class="col-lg-12">
-        <h3>Departement : ${departement.name}</h3>
-        <h4>Nom : ${departement.name}</h4>
-        <h4>Type : ${departement.type}</h4>
+        <h3>Departement : ${remuneration.name}</h3>
+        <h4>Nom : ${remuneration.name}</h4>
+        <h4>Type : ${remuneration.type}</h4>
+        <h4>Sous-jascent  </h4>
 
 
     </div>
